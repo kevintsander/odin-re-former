@@ -11,6 +11,15 @@
   <input type="submit" text="Submit">
 </form> %>
 
+<% if @user.errors.any? %>
+  <div id="error-list">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with model: @user do |form| %>
   <%= form.label :username %>
   <%= form.text_field :username %>
